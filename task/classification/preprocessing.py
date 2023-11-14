@@ -113,9 +113,9 @@ def load_data(args: argparse.Namespace):
         dataset = load_dataset('zh-plus/tiny-imagenet')
 
         train_df = pd.DataFrame(dataset['train'])
-        #valid_df = pd.DataFrame(dataset['validation']) # No pre-defined validation set
-        test_df = pd.DataFrame(dataset['test'])
-        num_class = 200
+        #valid_df = pd.DataFrame(dataset['validation']) # No public test set -> Use validation set as test set
+        test_df = pd.DataFrame(dataset['valid']) # No public test set
+        num_classes = 200
 
         # train-valid split
         train_df = train_df.sample(frac=1).reset_index(drop=True)
